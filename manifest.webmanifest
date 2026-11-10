@@ -1,7 +1,7 @@
 {
   "name": "Masari - Finanzas personales",
   "short_name": "Masari",
-  "description": "Tus finanzas, bajo control.",
+  "description": "Tus finanzas, sincronizadas en todos tus dispositivos.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
