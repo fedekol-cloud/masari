@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f7f7f5">
 <meta name="description" content="Masari — tus finanzas personales, bajo control.">
-<title>Masari 2.0</title>
+<title>Masari 4.0</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="./manifest.webmanifest">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -15,18 +17,28 @@
 @media(min-width:700px){.app{padding:25px 35px 60px}.modalback{align-items:center}.modal{border-radius:23px}.maincols{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}}
 @media(max-width:700px){.app{padding:14px 14px 80px}.grid{grid-template-columns:1fr 1fr;gap:8px}.grid .card:last-child{grid-column:span 2}.stat{font-size:19px}.two{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.quick{padding:14px}h1{font-size:25px}}
 </style>
+
+<style id="masari-4-design">
+:root{--bg:#f6f5f2;--surface:#fff;--text:#24231f;--muted:#8a8982;--line:#ebe9e3;--accent:#e8783f;--soft:#fff1e9;--red:#d65e58;--green:#328467;--yellow:#bd8a42;--shadow:0 10px 34px rgba(39,32,24,.045);--r:22px}
+[data-theme=dark]{--bg:#171715;--surface:#22221f;--text:#f4f1eb;--muted:#aaa69e;--line:#393832;--accent:#f08a50;--soft:#38271f;--shadow:0 10px 34px rgba(0,0,0,.18)}
+html{scroll-behavior:smooth;scroll-padding-top:95px}body{background:var(--bg);font-size:14px;letter-spacing:-.12px}.app{max-width:1320px;padding:22px 34px 110px}header{position:sticky;top:0;z-index:8;margin:0 -34px 26px;padding:14px 34px;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 75%,transparent)}.logo{font-size:29px;letter-spacing:-2px;font-weight:850}.logo b{color:var(--accent)}.actions{align-items:center}.icon{width:40px;height:40px;border-radius:50%;font-size:16px;background:var(--surface);transition:.2s}.icon:hover,.secondary:hover{border-color:var(--accent);transform:translateY(-1px)}.pill{font-weight:650;letter-spacing:.1px;padding:6px 10px}.top{margin:0 0 24px;align-items:flex-end}.top h1{font-size:32px;font-weight:750;letter-spacing:-1.5px}.top .muted{font-size:13px;margin-top:5px}.month{border-radius:13px;padding:11px 13px;font-weight:650}.quick{position:relative;overflow:hidden;padding:23px 25px;border:1px solid #f0d8c9;border-radius:24px;background:linear-gradient(115deg,#fff4ed 0%,#fffaf6 68%,#fff 100%);box-shadow:var(--shadow)}[data-theme=dark] .quick{background:linear-gradient(115deg,#35251d,#28231f);border-color:#5a3c2d}.quick:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #e8783f22;border-radius:50%;right:95px;top:-115px;box-shadow:0 0 0 22px #e8783f09,0 0 0 46px #e8783f06}.quick strong{font-size:16px;letter-spacing:-.3px}.quick p{font-size:13px;margin-top:6px}.primary,.secondary,.dangerbtn{border-radius:13px;padding:12px 17px;transition:transform .18s,box-shadow .18s}.primary{background:var(--accent);box-shadow:0 5px 14px #e8783f30}.primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px #e8783f3d}.secondary{font-weight:650}.section{margin-top:31px;scroll-margin-top:100px}.head{margin-bottom:15px}.head h2{font-size:17px;font-weight:750;letter-spacing:-.45px}.head .small{font-size:12px}.grid{gap:12px}.card{border-radius:20px;padding:19px;border-color:var(--line);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}.grid .card{min-height:112px;display:flex;flex-direction:column;justify-content:center}.grid .card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(39,32,24,.07)}.stat-label{font-size:11px;font-weight:650;letter-spacing:.25px;text-transform:uppercase;margin-bottom:8px}.stat{font-size:22px;letter-spacing:-.9px}.two,.maincols{gap:20px}.tabs,.chips{gap:8px}.tab,.chip{border-radius:999px;padding:8px 13px;font-size:12px;font-weight:600}.row{padding:14px 0}.emoji{border-radius:14px;background:var(--soft)}.info strong{font-size:13px}.info small{font-size:11px}.right strong{font-size:13px}.linkbtn{font-weight:650}.progress{height:7px}.chartrow{grid-template-columns:100px 1fr auto;gap:11px}.track{height:8px}.field input,.field select,.field textarea,.searchbar input,.searchbar select{border-radius:13px;padding:13px 14px;background:var(--surface);transition:border .15s,box-shadow .15s}.field input:focus,.field select:focus,.field textarea:focus,.searchbar input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #e8783f18;outline:none}.searchbar{gap:9px}.filters{gap:9px}.modalback{backdrop-filter:blur(5px);background:#17130f70}.modal{border-radius:25px;padding:25px;box-shadow:0 25px 80px #0003}.close{border-radius:50%}.amount{font-size:32px!important}.onboard{background:var(--bg)}.onboardbox{background:var(--surface);padding:38px 30px;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);width:min(100%,430px)}.onboardbox .logo{font-size:42px}.onboardbox h1{font-size:25px;letter-spacing:-1px}.onboardbox p{font-size:14px;line-height:1.65}.onboardbox button{border-radius:14px}.footer{padding:20px 0 4px}.bottom-nav{display:none}.section-anchor{scroll-margin-top:105px}
+@media(min-width:900px){.app{padding-left:46px;padding-right:46px}header{margin-left:-46px;margin-right:-46px;padding-left:46px;padding-right:46px}.grid{grid-template-columns:repeat(6,1fr)}.grid .card:last-child{grid-column:auto}.maincols{grid-template-columns:minmax(0,1.45fr) minmax(330px,.85fr)}#trend{padding:23px 25px}.quick{padding:25px 29px}}
+@media(max-width:700px){.app{padding:12px 15px 100px}header{margin:-12px -15px 22px;padding:12px 15px}.logo{font-size:26px}.actions{gap:6px}.icon{width:37px;height:37px}.top{align-items:flex-start;flex-direction:column;gap:13px}.top h1{font-size:28px}.month{width:100%}.quick{padding:18px;align-items:flex-start}.quick strong{font-size:14px}.quick p{max-width:230px;font-size:12px}.quick .primary{padding:11px 13px;white-space:nowrap}.grid{grid-template-columns:1fr 1fr;gap:9px}.grid .card{min-height:98px;padding:14px}.grid .card:last-child{grid-column:span 2}.stat{font-size:18px}.stat-label{font-size:10px}.section{margin-top:27px}.head h2{font-size:16px}.card{padding:16px;border-radius:18px}.maincols{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.searchbar{grid-template-columns:1fr auto}.searchbar button{padding:10px 12px}.bottom-nav{position:fixed;display:flex;z-index:20;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));padding:8px 7px calc(8px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 30px #00000013;justify-content:space-around}.bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:var(--muted);font-size:10px;font-weight:650;min-width:54px;padding:4px 7px;border-radius:12px}.bottom-nav a span:first-child{font-size:18px;line-height:1.2}.bottom-nav a.active{color:var(--accent);background:var(--soft)}.footer{margin-bottom:10px}.modalback{align-items:flex-end}.modal{border-radius:24px 24px 0 0;padding:22px 18px max(22px,env(safe-area-inset-bottom));max-height:92vh}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+
 </head>
 <body>
 <div class="app">
-<header><div class="logo">masari<b>.</b></div><div class="actions"><span id="syncStatus" class="pill" style="align-self:center">Sin conectar</span><button class="icon" onclick="toggleTheme()" title="Tema">◐</button><button class="icon" onclick="openSettings()" title="Configuración">⚙</button></div></header>
+<header><div class="logo">masari<b>.</b></div><div class="actions"><span id="syncStatus" class="pill" style="align-self:center">Sin conectar</span><button class="icon" onclick="toggleTheme()" title="Cambiar tema" aria-label="Cambiar tema">◐</button><button class="icon" onclick="openSettings()" title="Configuración" aria-label="Configuración">⚙</button></div></header>
 <main id="main">
-<div class="top"><div><h1>Hola 👋</h1><div class="muted small">Tus finanzas, bajo control.</div></div><input id="month" class="month" type="month"></div>
-<div class="quick"><div><strong>¿Querés cargar un movimiento?</strong><p>Registralo en segundos o escribilo como se lo contarías a alguien.</p></div><button class="primary" onclick="openMovement()">+ Cargar</button></div>
+<div class="top section-anchor" id="overview"><div><h1>Hola 👋</h1><div class="muted small">Este es el resumen de tus finanzas.</div></div><input id="month" class="month" type="month" aria-label="Seleccionar mes"></div>
+<div class="quick"><div><strong>¿Tuviste un gasto?</strong><p>Registralo ahora. Te lleva menos de 5 segundos.</p></div><button class="primary" onclick="openMovement()">＋ Cargar gasto</button></div>
 <section class="section"><div class="head"><h2>Tu mes</h2><span class="small muted" id="monthTitle"></span></div><div class="grid" id="stats"></div></section>
-<section class="section"><div class="head"><h2>Evolución</h2><span class="small muted">Gastos de los últimos 6 meses</span></div><div class="card" id="trend"></div></section>
+<section class="section section-anchor" id="evolution"><div class="head"><h2>Evolución</h2><span class="small muted">Gastos de los últimos 6 meses</span></div><div class="card" id="trend"></div></section>
 <div class="maincols">
 <div>
-<section class="section">
+<section class="section section-anchor" id="transactions">
 <div class="head"><h2>Movimientos</h2><button class="secondary" onclick="openMovement()">+ Nuevo</button></div>
 <div class="searchbar"><input id="search" placeholder="Buscar café, alquiler, tarjeta..." oninput="renderMovements()"><button class="secondary" onclick="clearSearch()">Limpiar</button></div>
 <div class="filters">
@@ -39,16 +51,16 @@
 </section>
 </div>
 <div>
-<section class="section"><div class="head"><h2>Presupuestos</h2><button class="secondary" onclick="openBudgets()">Editar</button></div><div class="card" id="budgets"></div></section>
+<section class="section section-anchor" id="planning"><div class="head"><h2>Presupuestos</h2><button class="secondary" onclick="openBudgets()">Editar</button></div><div class="card" id="budgets"></div></section>
 <section class="section"><div class="head"><h2>Por categoría</h2></div><div class="card" id="chart"></div></section>
 <section class="section"><div class="head"><h2>Masari Insights</h2><span class="pill">Análisis local</span></div><div class="card" id="insights"></div></section>
 </div>
 </div>
-<section class="section"><div class="head"><h2>Gastos compartidos</h2><button class="primary" onclick="openShared()">+ Compartir gasto</button></div><div class="card" id="shared"></div></section>
-<section class="section"><div class="head"><h2>Preguntale a Masari</h2><span class="small muted">Sin enviar tus datos a ningún servidor</span></div><div class="card"><div class="searchbar"><input id="ask" placeholder="Ej. ¿Cuánto gasté en comida este mes?"><button class="primary" onclick="askMasari()">Preguntar</button></div><div id="answer" class="muted small">Podés consultar tus gastos, categorías, balances y comparativas.</div></div></section>
-<div class="footer">Masari · Tus datos permanecen en este dispositivo.</div>
+<section class="section section-anchor" id="shared-section"><div class="head"><h2>Gastos compartidos</h2><button class="primary" onclick="openShared()">+ Compartir gasto</button></div><div class="card" id="shared"></div></section>
+<section class="section section-anchor" id="assistant-section"><div class="head"><h2>Preguntale a Masari</h2><span class="small muted">Sin enviar tus datos a ningún servidor</span></div><div class="card"><div class="searchbar"><input id="ask" placeholder="Ej. ¿Cuánto gasté en comida este mes?"><button class="primary" onclick="askMasari()">Preguntar</button></div><div id="answer" class="muted small">Podés consultar tus gastos, categorías, balances y comparativas.</div></div></section>
+<div class="footer">Masari · Tus finanzas, en orden.</div>
 </main></div>
-
+<nav class="bottom-nav" aria-label="Navegación principal"><a href="#overview" class="active"><span>⌂</span><span>Inicio</span></a><a href="#transactions"><span>↕</span><span>Movimientos</span></a><a href="#evolution"><span>◫</span><span>Análisis</span></a><a href="#planning"><span>◎</span><span>Presupuesto</span></a><a href="#shared-section"><span>⇄</span><span>Compartidos</span></a></nav>
 
 <div id="authScreen" class="onboard hidden" style="z-index:60">
   <div class="onboardbox">
@@ -314,6 +326,8 @@ function toggleTheme(){db.theme=document.documentElement.dataset.theme==='dark'?
 function exportData(){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));a.href=url;a.download='masari-backup-'+today()+'.json';a.click();URL.revokeObjectURL(url)}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!Array.isArray(x.movements)||!Array.isArray(x.categories)||!Array.isArray(x.payments)||!Array.isArray(x.shared))throw 0;if(confirm('Esto reemplazará los datos actuales. ¿Continuar?')){db={...fresh(),...x};save();applyTheme();render();toast('Backup restaurado')}}catch{toast('Backup inválido')}e.target.value=''};r.readAsText(f)}
 $('month').value=monthNow();$('month').addEventListener('change',render);applyTheme();render();renderForm();
+// Mobile navigation active state
+document.querySelectorAll('.bottom-nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.bottom-nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
 initSupabase();
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(console.warn));
 </script>

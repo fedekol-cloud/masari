@@ -1,26 +1,20 @@
-# Masari 3.0 — sincronización con Supabase
+# Masari 4.0 — rediseño premium + sincronización Supabase
 
-## Archivos
-- `index.html`: aplicación completa.
-- `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`: PWA.
-- `supabase-schema.sql`: tabla y políticas de seguridad.
+## Qué incluye
+- `index.html`: app rediseñada, con la lógica y estructura de datos de Masari 3.0.
+- `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`: instalación como PWA.
+- `supabase-schema.sql`: esquema original como referencia (no hace falta volver a ejecutarlo si ya está creada `masari_data`).
 
-## Configuración
-1. Crear un proyecto en https://supabase.com/.
-2. Abrir SQL Editor y ejecutar `supabase-schema.sql`.
-3. En Project Settings > API, copiar Project URL y la clave publicable (anon/public).
-4. En `index.html`, reemplazar:
-   - `PEGAR_URL_DEL_PROYECTO`
-   - `PEGAR_CLAVE_PUBLICABLE_ANON`
-5. No pegar nunca la `service_role` key en el navegador.
-6. Subir los archivos a la raíz del repositorio GitHub y esperar el deploy de GitHub Pages.
-7. Abrir la web en el dispositivo que contiene los datos locales, crear cuenta e iniciar sesión. Si la tabla todavía no tiene una fila para esa cuenta, Masari sube automáticamente los datos locales.
-8. Abrir la misma URL en el segundo dispositivo e iniciar sesión con el mismo email y contraseña.
+## Antes de publicar
+1. Abrí `index.html` y buscá `SUPABASE_ANON_KEY`.
+2. Reemplazá `PEGAR_CLAVE_PUBLICABLE_ANON` por la misma Publishable Key que ya usaste en Masari 3.0. La Project URL ya está configurada.
+3. No uses nunca `service_role` ni una clave `sb_secret_` en el navegador.
+4. Subí el contenido de esta carpeta a la raíz del repositorio GitHub, reemplazando los archivos anteriores.
+5. Esperá el deploy de GitHub Pages.
+6. Abrí la URL en tus dispositivos. Iniciá sesión con la misma cuenta.
 
-## Importante
-- La clave anon/public está diseñada para estar en el frontend; la protección depende de RLS.
-- No desactivar RLS.
-- La primera sincronización pregunta si se combinan los datos locales con los de la nube cuando ya existe información en ambos lados.
-- Exportar un JSON antes de migrar es una buena precaución.
-- La sincronización guarda el estado completo de Masari en una fila por usuario. Es adecuada para uso personal; si se hacen cambios simultáneos en dos dispositivos, el último guardado puede prevalecer.
-- Para un uso productivo más avanzado conviene normalizar las tablas y añadir resolución de conflictos.
+## Datos y sincronización
+- Masari 4.0 conserva la clave local `masari_data_v2` y la tabla `masari_data`; al iniciar sesión recupera los datos existentes de Supabase.
+- No borres la tabla ni los datos locales. Hacé un backup JSON desde Configuración antes de actualizar.
+- El archivo `sw.js` usa una nueva versión de caché (`masari-v4`) para evitar que el navegador siga mostrando la interfaz anterior.
+- La sincronización sigue usando una fila JSON por usuario, adecuada para uso personal; evitá editar al mismo tiempo en dos dispositivos.
